@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        /* Section Styling */
+        #contact {
+            background: linear-gradient(135deg, #32a852, #4caf50); /* Green gradient background */
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            color: #fff;
+        }
+
+        /* Contact Form Styling */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Form Elements Styling */
+        .contact-form label {
+            font-size: 1rem;
+            color: #555;
+            display: block;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 2px solid #32a852;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #e8f5e9;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+
+        /* Button Styling */
+        .contact-form button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            color: #fff;
+            background-color: #ff9800;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .contact-form button:hover {
+            background-color: #e65100;
+        }
+
+        /* Form Message Styling */
+        #form-message {
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <section id="contact" class="section">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form action="booking_tour.php" method="post" onsubmit="return validateForm()">
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="form-message" style="margin-top: 15px; color: green;"></div>
+        </div>
+    </section>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const formMessage = document.getElementById('form-message');
+
+            if (name === "" || email === "" || message === "") {
+                formMessage.textContent = "Please fill in all fields.";
+                formMessage.style.color = "red";
+                return false;
+            }
+            formMessage.textContent = "Your message has been sent!";
+            formMessage.style.color = "green";
+            return true;
+        }
+    </script>
+</body>
+</html>
